@@ -1,0 +1,71 @@
+Microsoft Windows [Version 10.0.22631.4037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>mongosh
+Current Mongosh Log ID: 66cff73c739ffdc2762710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-28T10:03:29.713+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use ishika
+switched to db ishika
+ishika> show collections
+My Database
+user
+ishika> db.col_name.insertOne({date:ISODate});
+{
+  acknowledged: true,
+  insertedId: ObjectId('66cff807739ffdc2762710bc')
+}
+ishika>  db.col_name.insertOne({date:ISODate()});
+{
+  acknowledged: true,
+  insertedId: ObjectId('66cff89b739ffdc2762710bd')
+}
+ishika> db.col_name.find()
+[
+  {
+    _id: ObjectId('66cff89b739ffdc2762710bd'),
+    date: ISODate('2024-08-29T04:27:07.971Z')
+  }
+]
+ishika> db.col_name.find().pretty();
+[
+  {
+    _id: ObjectId('66cff89b739ffdc2762710bd'),
+    date: ISODate('2024-08-29T04:27:07.971Z')
+  }
+]
+ishika> db.col_namefindOne();
+TypeError: db.col_namefindOne is not a function
+ishika> db.col_name findOne();
+Uncaught:
+SyntaxError: Missing semicolon. (1:11)
+
+> 1 | db.col_name findOne();
+    |            ^
+  2 |
+
+ishika> db.col_name.findOne();
+{
+  _id: ObjectId('66cff89b739ffdc2762710bd'),
+  date: ISODate('2024-08-29T04:27:07.971Z')
+}
+ishika> db.col_name.findOne({id});
+ReferenceError: id is not defined
+ishika> db.col_name.find({_id:ObjectId("66cff89b739ffdc2762710bd")})
+[
+  {
+    _id: ObjectId('66cff89b739ffdc2762710bd'),
+    date: ISODate('2024-08-29T04:27:07.971Z')
+  }
+]
+ishika> db.col_name.findOne({name:"ishika"});
+null
