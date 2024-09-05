@@ -1,0 +1,186 @@
+Microsoft Windows [Version 10.0.22631.4112]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>mongosh
+Current Mongosh Log ID: 66d9a8a4ffc39f067c2710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-30T18:35:35.962+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use Chitkara
+switched to db Chitkara
+Chitkara> show collections
+faculty
+student
+students
+user
+Chitkara> db.user.insertOne({date:ISODate()});
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d9a8bfffc39f067c2710bc')
+}
+Chitkara> db.user.find()
+[
+  {
+    _id: ObjectId('66d9a638512dde14c62710bc'),
+    name: 'Ishika Bedi',
+    age: 19,
+    class: 'G9'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710c7'),
+    name: 'Jack',
+    age: 20,
+    marks: 85,
+    subject: 'Mathematics'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710c8'),
+    name: 'Bob',
+    age: 22,
+    marks: 78,
+    subject: 'Physics'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710c9'),
+    name: 'Nav',
+    age: 21,
+    marks: 92,
+    subject: 'Chemistry'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710ca'),
+    name: 'Illu',
+    age: 23,
+    marks: 88,
+    subject: 'Biology'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710cb'),
+    name: 'Eva',
+    age: 19,
+    marks: 95,
+    subject: 'Computer Science'
+  },
+  {
+    _id: ObjectId('66d9a8bfffc39f067c2710bc'),
+    date: ISODate('2024-09-05T12:49:03.504Z')
+  }
+]
+Chitkara> db.user.find().pretty();
+[
+  {
+    _id: ObjectId('66d9a638512dde14c62710bc'),
+    name: 'Ishika Bedi',
+    age: 19,
+    class: 'G9'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710c7'),
+    name: 'Jack',
+    age: 20,
+    marks: 85,
+    subject: 'Mathematics'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710c8'),
+    name: 'Bob',
+    age: 22,
+    marks: 78,
+    subject: 'Physics'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710c9'),
+    name: 'Nav',
+    age: 21,
+    marks: 92,
+    subject: 'Chemistry'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710ca'),
+    name: 'Illu',
+    age: 23,
+    marks: 88,
+    subject: 'Biology'
+  },
+  {
+    _id: ObjectId('66d9a69c512dde14c62710cb'),
+    name: 'Eva',
+    age: 19,
+    marks: 95,
+    subject: 'Computer Science'
+  },
+  {
+    _id: ObjectId('66d9a8bfffc39f067c2710bc'),
+    date: ISODate('2024-09-05T12:49:03.504Z')
+  }
+]
+Chitkara> db.user.findOne();
+{
+  _id: ObjectId('66d9a638512dde14c62710bc'),
+  name: 'Ishika Bedi',
+  age: 19,
+  class: 'G9'
+}
+Chitkara> db.user.findOne();
+{
+  _id: ObjectId('66d9a638512dde14c62710bc'),
+  name: 'Ishika Bedi',
+  age: 19,
+  class: 'G9'
+}
+Chitkara> _id
+ReferenceError: _id is not defined
+Chitkara> db.user.findOne({_id: ObjectId("66cec21859148545fd2710c8")})
+null
+Chitkara> db.user.findOne({_id: ObjectId("66d9a69c512dde14c62710ca")})
+{
+  _id: ObjectId('66d9a69c512dde14c62710ca'),
+  name: 'Illu',
+  age: 23,
+  marks: 88,
+  subject: 'Biology'
+}
+Chitkara> db.user.findOne({name: "Bob"})
+{
+  _id: ObjectId('66d9a69c512dde14c62710c8'),
+  name: 'Bob',
+  age: 22,
+  marks: 78,
+  subject: 'Physics'
+}
+Chitkara> db.user.insertOne({name:"Bob",age:77,class:"G12"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d9a943ffc39f067c2710bd')
+}
+Chitkara>  db.user.findOne({name: "Bob"})
+{
+  _id: ObjectId('66d9a69c512dde14c62710c8'),
+  name: 'Bob',
+  age: 22,
+  marks: 78,
+  subject: 'Physics'
+}
+Chitkara>  db.user.insertOne({name:"Bob",age:77,marks:52,subjectsubject:"chemistry"});
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d9a959ffc39f067c2710be')
+}
+Chitkara> db.user.findOne({name: "Bob"})
+{
+  _id: ObjectId('66d9a69c512dde14c62710c8'),
+  name: 'Bob',
+  age: 22,
+  marks: 78,
+  subject: 'Physics'
+}
+Chitkara>
+
